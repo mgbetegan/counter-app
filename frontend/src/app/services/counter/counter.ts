@@ -1,5 +1,5 @@
-import {Injectable, signal,computed} from '@angular/core';
-import {BG_DEFAULT, BG_NEGATIVE, BG_POSITIVE} from '../../utils/contants';
+import {computed, Injectable, signal} from '@angular/core';
+import {BG_DANGER, BG_DEFAULT, BG_SUCCESS} from '../../utils/contants';
 
 @Injectable({
   providedIn: 'root',
@@ -8,12 +8,13 @@ export class CounterService {
   counterStoredValue = this.loadCounterFromStorage()
   counter = signal<number>(this.counterStoredValue.counter);
   actionsCount = signal<number>(this.counterStoredValue.actionsCount);
-  counterBg = computed(()=>{
-    if(this.counter() >= 10){
-      return BG_POSITIVE
+
+  counterBg = computed(() => {
+    if (this.counter() >= 10) {
+      return BG_DANGER;
     }
-    if(this.counter() <= -10){
-      return BG_NEGATIVE
+    if (this.counter() <= -10) {
+      return BG_SUCCESS
     }
     return BG_DEFAULT;
   });
@@ -40,13 +41,14 @@ export class CounterService {
     this.applyChanges()
   }
 
-  private applyChanges(){
-    if(this.actionsCount() % 30 ===0){
-      this.counter.update(value => value *2);
+  private applyChanges() {
+    if (this.actionsCount() % 30 === 0) {
+      this.counter.update(value => value * 2);
+      this.actionsCount.set(1);
     }
   }
 
-  private updateLocalStorage(){
+  private updateLocalStorage() {
     localStorage.setItem('counter', JSON.stringify(this.counter()))
     localStorage.setItem('actionsCount', JSON.stringify(this.actionsCount()))
   }
@@ -54,9 +56,8 @@ export class CounterService {
   private loadCounterFromStorage() {
     const counterValue = localStorage.getItem('counter');
     const actionsCountValue = localStorage.getItem('actions_count');
-    const counter =  counterValue ? JSON.parse(counterValue) : null;
+    const counter = counterValue ? JSON.parse(counterValue) : null;
     const actionsCount = actionsCountValue ? actionsCountValue : 1;
-
     return {
       counter: Number(counter),
       actionsCount: Number(actionsCount),
