@@ -1,0 +1,18 @@
+.main-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+router-outlet + * {
+  flex: 1;
+}
+
+.footer {
+  margin-top: auto;
+  text-align: center;
+  padding: 12px;
+  font-size: 14px;
+
+}

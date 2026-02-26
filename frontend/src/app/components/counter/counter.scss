@@ -1,0 +1,46 @@
+
+.counter-card {
+  position: relative;
+  background: white;
+  border-radius: 16px;
+  padding: 2rem 2rem 1.5rem;
+  box-shadow: var(--shadow-md);
+  border: 2px solid transparent;
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  text-align: center;
+}
+.multiplier-tag {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.25rem 0.7rem;
+  border-radius: 6px;
+}
+
+.value-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.value-number {
+  font-size: 6rem;
+  font-weight: 700;
+  line-height: 1;
+  margin: 0.5rem 0 1rem;
+}
+
+.value-info {
+  font-size: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.value-info span {
+  font-weight: 700;
+}
+

@@ -1,0 +1,6 @@
+
+<div class="counter-card" [ngClass]="counterService.counterBg()">
+  <div class="value-label">CURRENT VALUE</div>
+  <div class="value-number">{{ counterService.counter()}}</div>
+  <div class="value-info">Background changes at <span>10</span> and <span>-10</span></div>
+</div>

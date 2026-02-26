@@ -1,0 +1,21 @@
+<div class="content-grid">
+  <app-counter></app-counter>
+  <div class="controls-card">
+    <div class="controls-title">
+      Controls
+    </div>
+    <div class="control-block">
+      <div class="control-header">
+        <span class="action-desc">Decreases by X</span>
+      </div>
+      <button class="control-btn" (click)="counterService.decrement()">
+        <span class="icon">—</span> Decrement
+      </button>
+    </div>
+
+    <div class="actions-count-value-section">
+      <span class="actions-count-label">Actions count value:</span>
+      <span class="actions-count-value" >{{ counterService.actionsCount() }}</span>
+    </div>
+  </div>
+</div>
