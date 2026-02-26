@@ -1,1 +1,12 @@
-<p>reset-page works!</p>
+<div class="reset-container">
+  <h2>Counter reset</h2>
+  <form [formGroup]="resetForm" (ngSubmit)="submitReset()">
+  <div class="reset-form">
+      <label for="resetDate">Date *</label>
+      <input type="date" formControlName="date" id="resetDate"/>
+      <button type="submit" [disabled]="!resetForm.valid">
+        Validate
+      </button>
+  </div>
+  </form>
+</div>

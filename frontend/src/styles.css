@@ -113,6 +113,7 @@
   grid-template-columns: 1.2fr 1fr;
   gap: 1.6rem;
   align-items: start;
+  height: 80vh;
 }
 .counter-card {
   &.bg-success{

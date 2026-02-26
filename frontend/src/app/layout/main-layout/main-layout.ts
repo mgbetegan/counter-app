@@ -11,7 +11,7 @@ import {Footer} from '../footer/footer';
     Footer
   ],
   templateUrl: './main-layout.html',
-  styleUrl: './main-layout.css',
+  styleUrl: './main-layout.scss',
   standalone: true,
 })
 export class MainLayout {}

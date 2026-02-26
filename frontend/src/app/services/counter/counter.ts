@@ -22,14 +22,16 @@ export class CounterService {
 
   increment() {
     this.counter.update(value => value + 1);
-    this.updateLocalStorage()
     this.updateActionCount()
+    this.updateLocalStorage()
+
   }
 
   decrement() {
     this.counter.update(value => value - 1);
-    this.updateLocalStorage()
     this.updateActionCount()
+    this.updateLocalStorage()
+
   }
 
   reset() {
