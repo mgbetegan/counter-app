@@ -1,7 +1,11 @@
 import logging
+from typing import Optional
+
 import requests
+from sqlalchemy import select, func
 from sqlalchemy.dialects.mysql import insert
 from sqlalchemy.orm import Session
+from fastapi_pagination.ext.sqlalchemy import paginate
 from database.models.commune import Commune
 
 BATCH_SIZE = 2000
@@ -65,9 +69,17 @@ class CommunesService:
     def get_all_communes(self) -> list:
         """Used to retrieve all communes form db"""
         try:
-            communes = self.db_session.query(Commune).all()
-            logger.info(f"Retrieved {len(communes)} communes from the database")
-            return communes
+            data = self.db_session.query(Commune).all()
+            return data
         except Exception as e:
             logger.error(f"Error fetching all communes: {e}")
             return []
+    def get_paginated_communes(self, name:Optional[str]=None) -> list:
+        """Used to retrieve paginated communes form db"""
+        query = select(Commune).where(Commune.deleted_at.is_(None))
+        if name:
+            query = query.where(func.lower(Commune.name).like(f"%{name.lower()}%"))
+        query = query.order_by(Commune.created_at.desc(), Commune.id)
+        return paginate(self.db_session, query)
+
+

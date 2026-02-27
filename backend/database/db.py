@@ -10,12 +10,6 @@ logger = logging.getLogger(__name__)
 engine = create_engine(ASYNC_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-
-def get_redis():
-    pass
-
-
-
 def get_db():
     db = SessionLocal()
     try:
