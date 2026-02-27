@@ -5,8 +5,6 @@ import requests
 from sqlalchemy import select, func
 from sqlalchemy.dialects.mysql import insert
 from sqlalchemy.orm import Session
-from fastapi_pagination import set_params, set_page
-from fastapi_pagination.cursor import CursorPage, CursorParams
 from fastapi_pagination.ext.sqlalchemy import paginate
 from database.models.commune import Commune
 
