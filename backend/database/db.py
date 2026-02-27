@@ -4,7 +4,7 @@ from fastapi import HTTPException
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.exc import SQLAlchemyError
-from backend.config.database import *
+from config.database import *
 
 logger = logging.getLogger(__name__)
 engine = create_engine(ASYNC_DATABASE_URL)
