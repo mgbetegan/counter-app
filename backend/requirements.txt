@@ -12,3 +12,4 @@ colorlog==6.10.1
 requests==2.32.5
 alembic==1.18.4
 aiomysql==0.3.2
+fastapi-pagination==0.15.10
