@@ -2,3 +2,5 @@
 .vscode/
 frontend/.idea/
 frontend/.vscode/
+backend/.env
+backend/.venv
