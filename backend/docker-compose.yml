@@ -1,0 +1,35 @@
+services:
+  db:
+    image: mariadb:lts
+    restart: unless-stopped
+    container_name: pappernest-tech-assesment-db
+    env_file:
+      - .env.db
+    ports:
+      - '23306:3306'
+    networks:
+      - papernest-local-network
+    volumes:
+      - db_data:/data
+  redis:
+    image: redis:8.6-alpine
+    container_name: redis-cache
+    restart: unless-stopped
+    ports:
+      - "26379:6379"
+    volumes:
+      - redis_data:/data
+    command: sh -c 'redis-server $${REDIS_PASSWORD:+--requirepass $$REDIS_PASSWORD} --appendonly yes'
+    healthcheck:
+      test: [ "CMD", "sh", "-c", "[ -z \"${REDIS_PASSWORD}\" ] && redis-cli ping || redis-cli -a ${REDIS_PASSWORD} ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - papernest-local-network
+networks:
+  papernest-local-network:
+    driver: bridge
+volumes:
+  db_data:
+  redis_data:
