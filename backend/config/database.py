@@ -1,6 +1,7 @@
 import os
 
-DATABASE_URL = os.getenv("DATABASE_URL", "mariadb+aiomysql://technical_assessment:papersnest-test-local@127.0.0.1:1117/technical_assessment_db")
+ASYNC_DATABASE_URL = os.getenv("DATABASE_URL", "mariadb+aiomysql://technical_assessment:G7v9K2mR8qX4pL1z@127.0.0.1:23306/technical_assessment_db")
+DATABASE_URL = os.getenv("DATABASE_URL", "mariadb+pymysql://technical_assessment:G7v9K2mR8qX4pL1z@127.0.0.1:23306/technical_assessment_db")
 
 REDIS_HOST = os.getenv("REDIS_HOST", "127.0.0.1")
 REDIS_PORT = os.getenv("REDIS_PORT", "6379")

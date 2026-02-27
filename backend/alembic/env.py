@@ -1,11 +1,15 @@
 import logging
 from logging.config import fileConfig
 
-from sqlalchemy import engine_from_config, create_engine
+from sqlalchemy import create_engine
 from sqlalchemy import pool
-from backend.config.database import *
+from database.models import *
+from config.database import *
 
 from alembic import context
+
+from database.models import Base
+
 logger = logging.getLogger("alembic_env")
 
 # this is the Alembic Config object, which provides
@@ -20,8 +24,8 @@ if config.config_file_name is not None:
 # add your model's MetaData object here
 # for 'autogenerate' support
 # from myapp import mymodel
-# target_metadata = mymodel.Base.metadata
-target_metadata = None
+target_metadata = Base.metadata
+
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
@@ -47,6 +51,7 @@ def run_migrations_offline() -> None:
         target_metadata=target_metadata,
         literal_binds=True,
         dialect_opts={"paramstyle": "named"},
+        transaction_per_migration=False,
     )
 
     with context.begin_transaction():
@@ -64,7 +69,7 @@ def run_migrations_online() -> None:
 
     with connectable.connect() as connection:
         context.configure(
-            connection=connection, target_metadata=target_metadata
+            connection=connection, target_metadata=target_metadata,transaction_per_migration=False,
         )
 
         with context.begin_transaction():

@@ -1,7 +1,7 @@
 
 from sqlalchemy import Column, String
 
-from backend.database.models._base import Base
+from ._base import Base
 
 
 class Commune(Base):

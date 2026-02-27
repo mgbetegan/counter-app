@@ -6,15 +6,17 @@ services:
     env_file:
       - .env.db
     ports:
-      - '1117:3306'
+      - '23306:3306'
     networks:
       - papernest-local-network
+    volumes:
+      - db_data:/data
   redis:
     image: redis:8.6-alpine
     container_name: redis-cache
     restart: unless-stopped
     ports:
-      - "16379:6379"
+      - "26379:6379"
     volumes:
       - redis_data:/data
     command: sh -c 'redis-server $${REDIS_PASSWORD:+--requirepass $$REDIS_PASSWORD} --appendonly yes'
@@ -28,3 +30,6 @@ services:
 networks:
   papernest-local-network:
     driver: bridge
+volumes:
+  db_data:
+  redis_data:
