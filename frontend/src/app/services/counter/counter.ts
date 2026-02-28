@@ -1,5 +1,6 @@
-import {computed, Injectable, signal} from '@angular/core';
-import {BG_DANGER, BG_DEFAULT, BG_SUCCESS} from '../../utils/contants';
+import {computed,  Injectable, signal} from '@angular/core';
+import {BG_DANGER, BG_DEFAULT, BG_SUCCESS} from '@app/utils/contants';
+
 
 @Injectable({
   providedIn: 'root',
@@ -8,6 +9,7 @@ export class CounterService {
   counterStoredValue = this.loadCounterFromStorage()
   counter = signal<number>(this.counterStoredValue.counter);
   actionsCount = signal<number>(this.counterStoredValue.actionsCount);
+  melunPostalCodes = signal<number[]>([])
 
   counterBg = computed(() => {
     if (this.counter() >= 10) {
@@ -24,6 +26,7 @@ export class CounterService {
     this.counter.update(value => value + 1);
     this.updateActionCount()
     this.updateLocalStorage()
+    this.checkMelunReset();
 
   }
 
@@ -31,11 +34,18 @@ export class CounterService {
     this.counter.update(value => value - 1);
     this.updateActionCount()
     this.updateLocalStorage()
+    this.checkMelunReset()
 
   }
 
+  checkMelunReset(){
+    if(this.melunPostalCodes().includes(this.counter())) {
+      this.reset()
+    }
+  }
   reset() {
-    this.counter.set(0)
+    this.counter.set(0);
+    this.updateLocalStorage();
   }
 
   private updateActionCount() {
@@ -65,6 +75,8 @@ export class CounterService {
       actionsCount: Number(actionsCount),
     }
   }
+
+
 
 
 }

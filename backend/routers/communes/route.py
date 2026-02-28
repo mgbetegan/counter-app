@@ -26,7 +26,7 @@ async def get_communes(_params: LimitedCursorParams = Depends(),
                        name:str = Query(None)
                        ):
     try:
-        communes = service.get_paginated_communes()
+        communes = service.get_paginated_communes(name)
         return ApiResponse(success=True,data=communes)
     except Exception as e:
         logger.error(f"Error fetching all communes: {e}")

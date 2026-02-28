@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import 'primeicons/primeicons.css';
+:root {
+  --bg-color: #f8fafc;
+  --card-bg: #ffffff;
+  --primary: #0f172a;
+  --green-bg: #27ae60;
+  --red-bg: #f44336;
+  --accent: #6366f1;
+  --success: #10b981; /* Vert moderne */
+  --danger: #f43f5e;  /* Rouge moderne */
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --radius: 20px;
+  --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.main-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+router-outlet + * {
+  flex: 1;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 3rem;
+  box-shadow: var(--shadow);
+  flex: 1;
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.display-card {
+  text-align: center;
+  color: white;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  opacity: 0.8;
+}
+
+.counter-value {
+  font-size: 6rem;
+  font-weight: 800;
+  margin: 1rem 0;
+}
+
+.hint { font-size: 0.85rem; opacity: 0.7; }
+
+.control-card {
+  padding: 2rem !important;
+}
+
+
+.control-section {
+  margin-bottom: 1.5rem;
+}
+
+.control-section label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.divider {
+  height: 1px;
+  background: #e2e8f0;
+  margin: 1.5rem 0;
+}
+
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stats-row span {
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.w-100{
+  width: 100%;
+}
+

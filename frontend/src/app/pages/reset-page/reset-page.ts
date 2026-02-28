@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {CounterService} from '../../services/counter/counter';
+import {CounterService} from '@app/services/counter/counter';
 
 
 @Component({

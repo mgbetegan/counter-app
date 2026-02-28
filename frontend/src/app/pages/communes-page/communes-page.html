@@ -1,0 +1,87 @@
+<div class="communes-page">
+  <div class="page-header">
+    <div class="header-left">
+      <h1 class="title">Communes <span>d'Île-de-France</span></h1>
+    </div>
+  </div>
+  <p-table
+    #dt
+    [value]="communes()"
+    currentPageReportTemplate="{first}–{last} sur {totalRecords}"
+    dataKey="insee_code"
+    [tableStyle]="{ 'min-width': '100%' }"
+    class="communes-table"
+  >
+    <ng-template pTemplate="caption">
+      <div class="table-toolbar">
+        <div class="toolbar-left">
+          <p-iconField iconPosition="left">
+            <p-inputIcon>
+              <i class="pi pi-search"></i>
+            </p-inputIcon>
+            <p-autoComplete
+              [showClear]="true"
+              (completeMethod)="onSearch($event)"
+              (onClear)="onClear()"
+              [delay]="500"
+              [pt]="{ loader: { style: { display: 'none' } } }"
+              placeholder="Search by name"></p-autoComplete>
+          </p-iconField>
+        </div>
+      </div>
+    </ng-template>
+
+    <!-- Header -->
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="name">
+          Name
+        </th>
+        <th pSortableColumn="postal_code">
+          Postal codes
+        </th>
+        <th pSortableColumn="insee_code">
+          Insee Code
+        </th>
+      </tr>
+    </ng-template>
+
+    <!-- Body -->
+    <ng-template pTemplate="body" let-commune>
+      <tr>
+        <td>
+          {{ commune.name }}
+        </td>
+        <td>
+          {{ commune.postal_code }}
+        </td>
+        <td>
+          {{ commune.insee_code }}
+        </td>
+      </tr>
+    </ng-template>
+
+    <!-- Empty -->
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="4" class="empty-msg">
+         There is no data available
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <div>
+    <p-paginator [first]="0"
+                 [rows]="pageSize()"
+                 [totalRecords]="total()"
+                 [rowsPerPageOptions]="[50, 100, 150, 200]"
+                 (onPageChange)="onPageChange($event)"
+                 [showFirstLastIcon]="false"
+                 [showCurrentPageReport]="true"
+                 [showPageLinks]="false"
+                 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} records"
+    />
+
+  </div>
+</div>

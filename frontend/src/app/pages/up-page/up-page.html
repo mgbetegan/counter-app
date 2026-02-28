@@ -1,22 +1,12 @@
-<div class="content-grid">
+<div class="container">
   <app-counter></app-counter>
-
-  <div class="controls-card">
-    <div class="controls-title">
-      Controls
-    </div>
-
-    <div class="control-block">
-      <div class="control-header">
-        <span class="action-desc">Increases by X</span>
-      </div>
-      <button class="control-btn" (click)="counterService.increment()">
-        <span class="icon">+</span> Increment
-      </button>
-    </div>
-    <div class="actions-count-value-section">
-      <span class="actions-count-label">Actions count Value:</span>
-      <span class="actions-count-value" >{{ counterService.actionsCount() }}</span>
+  <div class="card control-card">
+    <p-button label="Increment" (click)="counterService.increment()" styleClass="w-100" severity="primary"
+              icon="pi pi-plus"></p-button>
+    <div class="divider"></div>
+    <div class="stats-row">
+      <span>Total Actions</span>
+      <span class="badge">{{ counterService.actionsCount() }}</span>
     </div>
   </div>
 </div>
