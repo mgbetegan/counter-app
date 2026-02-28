@@ -2,8 +2,8 @@ from celery import Celery
 from config.database import *
 celery_app = Celery(
     "worker",
-    broker=f"{REDIS_HOST}:{REDIS_PORT}/0",
-    backend=f"{REDIS_HOST}:{REDIS_PORT}/1"
+    broker=f"redis://{REDIS_HOST}:{REDIS_PORT}/0",
+    backend=f"redis://{REDIS_HOST}:{REDIS_PORT}/1"
 )
 
 celery_app.conf.update(

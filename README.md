@@ -103,7 +103,10 @@ git clone https://github.com/mgbetegan/counter-app.git
 ```bash
 cd backend
 cp .env.db.example .env.db
-# Editer .env.db avec vos paramètres de db
+cp .env.example .env
+```
+**Editer les fichiers .env.db et .env avec vos paramètres de db**
+```bash
 docker compose -f docker-compose-db.yml up -d
 ```
 
@@ -113,14 +116,16 @@ docker compose -f docker-compose-db.yml up -d
 ```bash
 cd backend
 
+#Création d'un environnement virtuel python
 python -m venv .venv
+
+#Activation de votre environnement virtuel
 source .venv/bin/activate   # Linux/Mac
+
 .venv\Scripts\activate      # Windows
 
+#Installation des dépendances
 pip install -r requirements.txt
-
-cp .env.example .env
-# Éditer .env avec vos paramètres de connexion
 
 #Appliquer les migrations pour la création des tables en base de donnée
 alembic upgrade head
@@ -133,8 +138,13 @@ python -m start
 ### 4. Celery (Pour la récupération des communes d'Île de france toute les 5min)
 
 ```bash
-# Dans une nouveau terminal naviguez à nouveau dans bakcend
+# Dans une nouveau terminal naviguez à nouveau dans backend
 cd backend
+
+#Assurez-vous que votre environnement virtuel est bien activé
+source .venv/bin/activate   # Linux/Mac
+
+.venv\Scripts\activate      # Windows
 
 python -m celery -A tasks.worker_app.celery_app worker --beat --loglevel=info
 
@@ -146,10 +156,35 @@ python -m celery -A tasks.worker_app.celery_app worker --beat --loglevel=info
 # Depuis la racine du projet,
 cd frontend
 
+#Installation des dépendances
 npm install
 ng serve
 ```
 
 L'application est disponible sur http://localhost:4200
+
+
+### 5. Troubleshooting
+### 5.1 FRONTEND
+Si en exécutant `ng serve` vous avez l'erreur `command not found:ng` svp exécutez la commande ci-dessous :
+```bash
+npm i -g @angular/cli
+```
+La CLI d'Angular sera installée
+
+#### 5.2 BACKEND
+Si en exécutant `python -m un_module` vous avez l'erreur `command not found: python`,
+Essayez à nous nouveau avec `python3 -m un_module`. Si l'erreur persiste alors 
+cela veux dire que vous n'avez peu être pas python d'installé sur votre marchine
+.
+
+**Solution:**
+
+**Vérifiez si python est installé:**
+
+```bash
+python3 --version
+```
+Si python n'est pas installé alors vous devrez l'installer
 
 ---

@@ -6,7 +6,7 @@ services:
     env_file:
       - .env.db
     ports:
-      - "${DB_PORT:-23306}:3306"
+      - "${DATABASE_PORT:-23306}:3306"
     networks:
       - papernest-local-network
     volumes:
