@@ -49,8 +49,8 @@ export class CommunesPage implements OnInit {
   communesService = inject(CommuneService);
 
 
-  async ngOnInit() {
-    await this.getCommunes();
+   ngOnInit() {
+    this.getCommunes();
   }
 
   async onSearch(event: AutoCompleteCompleteEvent) {

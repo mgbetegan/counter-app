@@ -8,8 +8,6 @@
   border-bottom: 1px solid #e2e8f0;
   position: relative;
 }
-
-
 .logo {
   font-weight: 800;
   font-size: 1.2rem;
@@ -19,7 +17,6 @@
 .logo span {
   color: var(--accent);
 }
-
 
 .nav-links {
   display: flex;
@@ -42,7 +39,7 @@
 
 
 .burger-menu {
-  display: none; /* caché desktop */
+  display: none;
   flex-direction: column;
   justify-content: space-between;
   width: 26px;
@@ -88,13 +85,10 @@
     width: 220px;
     padding: 1rem;
     gap: 1rem;
-
     box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-
     opacity: 0;
     transform: translateY(-10px);
     pointer-events: none;
-
     transition: 0.25s ease;
   }
 
