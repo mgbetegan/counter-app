@@ -6,7 +6,7 @@
   </div>
   <p-table
     #dt
-    [value]="communes()"
+    [value]="isLoading() ? skeletonRows : communes()"
     currentPageReportTemplate="{first}–{last} sur {totalRecords}"
     dataKey="insee_code"
     [tableStyle]="{ 'min-width': '100%' }"
@@ -47,19 +47,23 @@
     </ng-template>
 
     <!-- Body -->
-    <ng-template pTemplate="body" let-commune>
-      <tr>
-        <td>
-          {{ commune.name }}
-        </td>
-        <td>
-          {{ commune.postal_code }}
-        </td>
-        <td>
-          {{ commune.insee_code }}
-        </td>
-      </tr>
-    </ng-template>
+      <ng-template pTemplate="body" let-commune>
+        @if (isLoading()) {
+          <tr>
+            <td><p-skeleton /></td>
+            <td><p-skeleton /></td>
+            <td><p-skeleton /></td>
+          </tr>
+        } @else {
+          <tr>
+            <td>{{ commune.name }}</td>
+            <td>{{ commune.postal_code }}</td>
+            <td>{{ commune.insee_code }}</td>
+          </tr>
+        }
+      </ng-template>
+
+
 
     <!-- Empty -->
     <ng-template pTemplate="emptymessage">
@@ -71,11 +75,11 @@
     </ng-template>
   </p-table>
 
-  <div>
+  <div class="paginator-wrapper">
     <p-paginator [first]="0"
                  [rows]="pageSize()"
                  [totalRecords]="total()"
-                 [rowsPerPageOptions]="[50, 100, 150, 200]"
+                 [rowsPerPageOptions]="[30,50, 100, 150, 200]"
                  (onPageChange)="onPageChange($event)"
                  [showFirstLastIcon]="false"
                  [showCurrentPageReport]="true"

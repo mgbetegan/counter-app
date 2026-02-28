@@ -56,6 +56,8 @@ J'ai choisi les **signals** pour gérer l'état du compteur plutôt que RxJS pou
 
 Les composants sont tous **standalone**.
 
+J'ai aussi implémenté un intercepteur Http pour la gestion de certains types d'erreurs
+
 ### Persistance du compteur
 
 Le compteur survit au rafraîchissement via **localStorage**. Le `CounterService` hydrate ses signaux au démarrage et écrit à chaque mutation.
@@ -89,7 +91,14 @@ J'ai défini un **preset PrimeNG custom** basé sur les couleurs Papernest (bleu
 
 ## Installation & Lancement
 
-### 1. Base de donnée
+
+### 1. Clonner le projet
+
+```bash
+git clone https://github.com/mgbetegan/counter-app.git
+```
+
+### 2. Base de donnée
 
 ```bash
 cd backend
@@ -99,7 +108,7 @@ docker compose -f docker-compose-db.yml up -d
 ```
 
 
-### 1. Backend
+### 3. Backend
 
 ```bash
 cd backend
@@ -121,7 +130,7 @@ python -m start
 ```
 
 
-### 2. Celery (Pour la récupération des communes d'Île de france toute les 5min)
+### 4. Celery (Pour la récupération des communes d'Île de france toute les 5min)
 
 ```bash
 # Dans une nouveau terminal naviguez à nouveau dans bakcend
@@ -131,11 +140,10 @@ python -m celery -A tasks.worker_app.celery_app worker --beat --loglevel=info
 
 ```
 
-### 3. Frontend
+### 5. Frontend
 
 ```bash
 # Depuis la racine du projet,
-
 cd frontend
 
 npm install

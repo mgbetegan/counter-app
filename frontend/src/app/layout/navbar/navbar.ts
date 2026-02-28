@@ -11,4 +11,12 @@ import {RouterLink, RouterLinkActive} from '@angular/router';
   styleUrl: './navbar.scss',
   standalone: true,
 })
-export class Navbar {}
+export class Navbar {
+  protected isMobileMenuOpen = false;
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+  closeMobileMenu(): void {
+    this.isMobileMenuOpen = false;
+  }
+}
