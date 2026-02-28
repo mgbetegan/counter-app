@@ -7,9 +7,14 @@ import {providePrimeNG} from 'primeng/config';
 import {ENVIRONMENT} from './tokens/environnement';
 import {environment} from '@environments/environment';
 import {PPTheme} from '../theme';
+import {provideHttpClient, withInterceptors} from '@angular/common/http';
+import {httpErrorInterceptor} from '@app/interceptors/httpErrorInterceptor';
+import {MessageService} from 'primeng/api';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    MessageService,
+
     {
       provide: ENVIRONMENT,
       useValue: environment,
@@ -24,6 +29,9 @@ export const appConfig: ApplicationConfig = {
         },
       },
       ripple: true,
-    })
+    }),
+    provideHttpClient(
+      withInterceptors([httpErrorInterceptor]),
+    )
   ]
 };

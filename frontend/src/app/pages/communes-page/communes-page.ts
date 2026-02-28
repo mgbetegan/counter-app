@@ -85,8 +85,8 @@ export class CommunesPage implements OnInit {
       this.nextPage.set(response.data.next_page)
       this.previousPage.set(response.data.previous_page)
       this.total.set(response.data.total)
-    } catch (e) {
-      console.log(e);
+    } catch (_e) {
+
     }
   }
 

@@ -58,6 +58,7 @@ router-outlet + * {
   padding: 3rem;
   box-shadow: var(--shadow);
   flex: 1;
+  gap: 1.5rem;
   min-height: 350px;
   display: flex;
   flex-direction: column;
@@ -121,14 +122,17 @@ router-outlet + * {
   color: var(--text-muted);
 }
 
-.footer {
-  text-align: center;
-  padding: 2rem;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
+
 
 .w-100{
   width: 100%;
+}
+
+.vh-100{
+  height: 100vh;
+}
+.input-error{
+  color: red;
+
 }
 
