@@ -4,4 +4,4 @@ frontend/.idea/
 frontend/.vscode/
 backend/.env
 backend/.venv
-bakcend/.env.db
+backend/.env.db

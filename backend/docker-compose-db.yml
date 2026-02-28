@@ -6,7 +6,7 @@ services:
     env_file:
       - .env.db
     ports:
-      - '23306:3306'
+      - "${DB_PORT:-23306}:3306"
     networks:
       - papernest-local-network
     volumes:
@@ -16,7 +16,7 @@ services:
     container_name: redis-cache
     restart: unless-stopped
     ports:
-      - "26379:6379"
+      - "${REDIS_PORT:-26379}:6379"
     volumes:
       - redis_data:/data
     command: sh -c 'redis-server $${REDIS_PASSWORD:+--requirepass $$REDIS_PASSWORD} --appendonly yes'

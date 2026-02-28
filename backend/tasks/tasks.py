@@ -1,5 +1,5 @@
 
-from .celery_app import celery_app
+from .worker_app import celery_app
 from database.db import get_db
 from services.commune_service import CommunesService
 
@@ -9,7 +9,8 @@ def fetch_communes_task():
     db_session = next(get_db())
     try:
         communes_service = CommunesService(db_session)
-        fetched_communes = communes_service.fetch_communes(region_code=11)  # exemple code région
+        ## region code 11 refer to Île de france
+        fetched_communes = communes_service.fetch_communes(region_code=11)
         communes = [
             {"nom": c.get('nom'), "codesPostaux": c.get('codesPostaux'), "code": c.get('code')}
             for c in fetched_communes

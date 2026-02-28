@@ -1,6 +1,6 @@
 
 
-<div class="container">
+<div class="container vh-100">
   <app-counter></app-counter>
   <div class="card control-card">
     <h2>Counter reset</h2>
@@ -11,8 +11,6 @@
         @if(isSubmitted() && resetForm.controls.date.hasError('required')){
           <small class="input-error">This input is required</small>
         }
-
-
         <p-button severity="success" type="submit" styleClass="w-100">
           Validate
         </p-button>

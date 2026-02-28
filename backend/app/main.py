@@ -2,10 +2,10 @@ from fastapi import FastAPI
 from fastapi_pagination import add_pagination
 from starlette.middleware.cors import CORSMiddleware
 
-from backend.config.logging_config import setup_logging
+from config.logging_config import setup_logging
 
-from backend.routers.router import router
-from backend.middlewares.api_error_handler import ApiErrorHandlerMiddleware
+from routers.router import router
+from middlewares.api_error_handler import ApiErrorHandlerMiddleware
 
 setup_logging()
 

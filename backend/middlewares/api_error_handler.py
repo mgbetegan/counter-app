@@ -6,7 +6,7 @@ from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from pydantic import ValidationError
 from starlette.middleware.base import BaseHTTPMiddleware
 
-from backend.config.env import ENV
+from config.env import ENV
 
 logger = logging.getLogger(__name__)
 

@@ -1,18 +1,15 @@
 import logging
-from http.client import HTTPException
-
 from fastapi import APIRouter, Depends, Query
-from fastapi_pagination import set_page, set_params, pagination_ctx
+from fastapi_pagination import  pagination_ctx
 
-from fastapi_pagination.cursor import CursorParams
 from sqlalchemy.orm import Session
 
-from backend.config.api_response import ApiResponse
-from backend.database.db import get_db
+from config.api_response import ApiResponse
+from database.db import get_db
 from .schemas import CommuneRead
-from backend.services.commune_service import CommunesService
-from ...pagination.cursor_params import LimitedCursorParams
-from ...pagination.pagination import CursorPaginatedPage
+from services.commune_service import CommunesService
+from pagination.cursor_params import LimitedCursorParams
+from pagination.pagination import CursorPaginatedPage
 
 router = APIRouter()
 logger = logging.getLogger(__name__)
