@@ -2,7 +2,17 @@
 
 <nav class="navbar">
   <div class="logo">Counter<span>App</span></div>
-  <div class="nav-links">
+  <button
+    class="burger-menu"
+    [class.open]="isMobileMenuOpen"
+    (click)="toggleMobileMenu()"
+    aria-label="Toggle menu"
+    type="button">
+    <span class="burger-line"></span>
+    <span class="burger-line"></span>
+    <span class="burger-line"></span>
+  </button>
+  <div class="nav-links" [class.open]="isMobileMenuOpen">
     <a routerLink="/up" routerLinkActive="active" class="nav-link">Up</a>
     <a routerLink="/down" routerLinkActive="active" class="nav-link">Down</a>
     <a routerLink="/reset" routerLinkActive="active" class="nav-link">Reset</a>

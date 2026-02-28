@@ -1,15 +1,15 @@
-
 .communes-page {
   max-width: 1060px;
   margin: 0 auto;
   padding: 2rem 1.5rem 3rem;
 }
 
+
 .page-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .header-left {
@@ -19,7 +19,12 @@
     letter-spacing: -0.04em;
     line-height: 1.15;
     margin: 0;
-    color: var(--p-primary-color)!important;
+    color: var(--p-primary-color) !important;
+
+    span {
+      font-weight: 400;
+      opacity: 0.7;
+    }
   }
 
   .subtitle {
@@ -35,11 +40,13 @@
   gap: 0.45rem;
 }
 
+
 .table-toolbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  padding: 0.25rem 0 0.75rem;
 }
 
 .toolbar-left {
@@ -54,10 +61,76 @@
 }
 
 
-.empty-msg {
-  text-align: center;
-  padding: 2.5rem 1rem;
-  color: red;
-  font-size: 0.88rem;
+.communes-table {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--p-content-border-color);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
 }
 
+
+:host ::ng-deep  {
+  .p-datatable{
+    position:unset
+  }
+  .paginator-wrapper .p-paginator{
+    background: transparent!important;
+  }
+
+  .p-datatable-header {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--p-content-border-color);
+    background: var(--p-content-background);
+  }
+
+
+  .p-datatable-thead > tr > th {
+    padding: 0.7rem 1rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--p-text-muted-color);
+    background: var(--p-content-background);
+    border-bottom: 2px solid var(--p-content-border-color);
+    white-space: nowrap;
+  }
+
+
+  .p-datatable-tbody > tr {
+    transition: background 0.15s ease;
+
+    > td {
+      padding: 0.75rem 1rem;
+      font-size: 0.875rem;
+      border-bottom: 1px solid var(--p-content-border-color);
+      vertical-align: middle;
+    }
+
+    &:last-child > td {
+      border-bottom: none;
+    }
+
+    &:hover > td {
+      background: var(--p-content-hover-background);
+    }
+  }
+}
+
+
+.empty-msg {
+  text-align: center;
+  padding: 3.5rem 1rem;
+  color: red;
+  font-size: 0.88rem;
+  opacity: 0.75;
+}
+
+
+.paginator-wrapper {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}

@@ -13,6 +13,7 @@ import {lastValueFrom} from 'rxjs';
 import {Commune, CommuneQuery} from '@app/models/commune.model';
 import {AutoComplete, AutoCompleteCompleteEvent} from 'primeng/autocomplete';
 import {Paginator, PaginatorState} from 'primeng/paginator';
+import {Skeleton} from 'primeng/skeleton';
 
 @Component({
   selector: 'app-communes',
@@ -29,6 +30,7 @@ import {Paginator, PaginatorState} from 'primeng/paginator';
     InputIconModule,
     AutoComplete,
     Paginator,
+    Skeleton,
   ],
   templateUrl: './communes-page.html',
   styleUrls: ['./communes-page.scss'],
@@ -36,16 +38,18 @@ import {Paginator, PaginatorState} from 'primeng/paginator';
 export class CommunesPage implements OnInit {
   @ViewChild('dt') dt!: Table;
   communes = signal<Commune[]>([]);
-  pageSize = signal<number>(50)
+  pageSize = signal<number>(30)
   previousPage = signal<string |null>(null)
   nextPage = signal<string | null>(null)
   total = signal<number>(0)
   first = signal(0);
+  isLoading = signal<boolean>(false);
+  skeletonRows = Array(this.pageSize()).fill({});
   searchValue = '';
   communesService = inject(CommuneService);
 
 
-  ngOnInit(): void {
+   ngOnInit() {
     this.getCommunes();
   }
 
@@ -65,7 +69,7 @@ export class CommunesPage implements OnInit {
     this.first.set(newFirst);
 
     if (event.rows !== this.pageSize()) {
-      this.pageSize.set(event.rows ?? 50);
+      this.pageSize.set(event.rows ?? 30);
       this.first.set(0);
       await this.getCommunes()
       return;
@@ -80,13 +84,15 @@ export class CommunesPage implements OnInit {
 
   async getCommunes(query: CommuneQuery = {size: this.pageSize()}) {
     try {
+      this.isLoading.set(true);
       const response = await lastValueFrom(this.communesService.fetchCommunes(query))
       this.communes.set(response.data.items)
       this.nextPage.set(response.data.next_page)
       this.previousPage.set(response.data.previous_page)
       this.total.set(response.data.total)
+      this.isLoading.set(false)
     } catch (_e) {
-
+      this.isLoading.set(false);
     }
   }
 

@@ -7,8 +7,8 @@
   --green-bg: #27ae60;
   --red-bg: #f44336;
   --accent: #6366f1;
-  --success: #10b981; /* Vert moderne */
-  --danger: #f43f5e;  /* Rouge moderne */
+  --success: #10b981;
+  --danger: #f43f5e;
   --text-main: #1e293b;
   --text-muted: #64748b;
   --radius: 20px;
@@ -122,8 +122,6 @@ router-outlet + * {
   color: var(--text-muted);
 }
 
-
-
 .w-100{
   width: 100%;
 }
@@ -134,5 +132,47 @@ router-outlet + * {
 .input-error{
   color: red;
 
+}
+
+/* ── Responsive Mobile ── */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+    height: auto;
+  }
+
+  .vh-100 {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .card {
+    padding: 2rem 1.5rem;
+    min-height: unset;
+    flex: unset;
+  }
+
+  .control-card {
+    padding: 1.5rem !important;
+  }
+
+  .counter-value {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .card {
+    padding: 1.5rem 1.25rem;
+    border-radius: 16px;
+  }
+
+  .counter-value {
+    font-size: 3.2rem;
+  }
 }
 
