@@ -1,12 +1,23 @@
-<div class="reset-container">
-  <h2>Counter reset</h2>
-  <form [formGroup]="resetForm" (ngSubmit)="submitReset()">
-  <div class="reset-form">
-      <label for="resetDate">Date *</label>
-      <input type="date" formControlName="date" id="resetDate"/>
-      <button type="submit" [disabled]="!resetForm.valid">
-        Validate
-      </button>
+
+
+<div class="container">
+  <app-counter></app-counter>
+  <div class="card control-card">
+    <h2>Counter reset</h2>
+    <form [formGroup]="resetForm" (ngSubmit)="submitReset()">
+      <div class="reset-form">
+        <label for="resetDate">Date *</label>
+        <input pInputText type="date" formControlName="date" id="resetDate"/>
+        @if(isSubmitted() && resetForm.controls.date.hasError('required')){
+          <small class="input-error">This input is required</small>
+        }
+
+
+        <p-button severity="success" type="submit" styleClass="w-100">
+          Validate
+        </p-button>
+      </div>
+    </form>
   </div>
-  </form>
 </div>
+

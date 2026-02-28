@@ -1,0 +1,136 @@
+import {definePreset} from '@primeuix/themes';
+import Aura from '@primeuix/themes/aura';
+
+export const PPTheme = definePreset(Aura, {
+  semantic: {
+    primary: {
+      50:  '#f6f5fe',
+      100: '#eeedfc',
+      200: '#dedcfa',
+      300: '#c5c0f5',
+      400: '#a89ef0',
+      500: '#6c5ce7',
+      600: '#5b4fd6',
+      700: '#4a3fc7',
+      800: '#3d34a8',
+      900: '#322b89',
+      950: '#211c5e',
+    },
+    colorScheme: {
+      light: {
+        primary: {
+          color:         '{primary.500}',
+          contrastColor: '#ffffff',
+          hoverColor:    '{primary.600}',
+          activeColor:   '{primary.700}',
+        },
+
+        highlight: {
+          background:      '#f6f5fe',
+          focusBackground: '#eeedfc',
+          color:           '#4a3fc7',
+          focusColor:      '#3d34a8',
+        },
+        surface: {
+          0:   '#ffffff',
+          50:  '#f7f7fb',
+          100: '#f0f0f6',
+          200: '#e4e4ee',
+          300: '#d4d4e0',
+          400: '#b0b0c4',
+          500: '#8888a0',
+          600: '#555568',
+          700: '#2d2e3a',
+          800: '#232430',
+          900: '#191a23',
+          950: '#111118',
+        },
+      },
+      dark: {
+        primary: {
+          color:         '#a89ef0',
+          contrastColor: '#111118',
+          hoverColor:    '#c5c0f5',
+          activeColor:   '#dedcfa',
+        },
+        highlight: {
+          background:      'rgba(108, 92, 231, 0.16)',
+          focusBackground: 'rgba(108, 92, 231, 0.24)',
+          color:           'rgba(255,255,255,.87)',
+          focusColor:      'rgba(255,255,255,.87)',
+        },
+        surface: {
+          0:   '#111118',
+          50:  '#191a23',
+          100: '#232430',
+          200: '#2d2e3a',
+          300: '#3e3f50',
+          400: '#555568',
+          500: '#8888a0',
+          600: '#b0b0c4',
+          700: '#d4d4e0',
+          800: '#e4e4ee',
+          900: '#f0f0f6',
+          950: '#ffffff',
+        },
+      },
+    },
+  },
+  components: {
+    success: {
+      50:  '#f0fcf7',
+      100: '#e0f9f0',
+      200: '#b8f0da',
+      300: '#8ae7c3',
+      400: '#5ee4ba',
+      500: '#2ed8a3',
+      600: '#1ab390',
+      700: '#158e72',
+      800: '#116e59',
+      900: '#0e5545',
+      950: '#083829',
+    },
+
+    warn: {
+      50:  '#f6f5fe',
+      100: '#eeedfc',
+      200: '#dedcfa',
+      300: '#c5c0f5',
+      400: '#a89ef0',
+      500: '#6c5ce7',
+      600: '#5b4fd6',
+      700: '#4a3fc7',
+      800: '#3d34a8',
+      900: '#322b89',
+      950: '#211c5e',
+    },
+
+    info: {
+      50:  '#f5f8fe',
+      100: '#ebf1fd',
+      200: '#d6e3fb',
+      300: '#b8cef7',
+      400: '#94b5f2',
+      500: '#6b96e7',
+      600: '#5278d4',
+      700: '#3f5fba',
+      800: '#334d98',
+      900: '#283c76',
+      950: '#1a274d',
+    },
+
+    danger: {
+      50:  '#fef2f2',
+      100: '#fee2e2',
+      200: '#fecaca',
+      300: '#fca5a5',
+      400: '#f87171',
+      500: '#ef4444',
+      600: '#dc2626',
+      700: '#b91c1c',
+      800: '#991b1b',
+      900: '#7f1d1d',
+      950: '#450a0a',
+    },
+  }
+});

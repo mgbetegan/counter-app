@@ -78,7 +78,7 @@ class CommunesService:
         """Used to retrieve paginated communes form db"""
         query = select(Commune).where(Commune.deleted_at.is_(None))
         if name:
-            query = query.where(func.lower(Commune.name).like(f"%{name.lower()}%"))
+            query = query.where(func.lower(Commune.name).like(f"{name.lower()}%"))
         query = query.order_by(Commune.created_at.desc(), Commune.id)
         return paginate(self.db_session, query)
 

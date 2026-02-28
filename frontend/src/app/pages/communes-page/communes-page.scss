@@ -1,0 +1,63 @@
+
+.communes-page {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.header-left {
+  .title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.15;
+    margin: 0;
+    color: var(--p-primary-color)!important;
+  }
+
+  .subtitle {
+    margin-top: 0.3rem;
+    font-size: 0.8rem;
+    color: red;
+    font-weight: 500;
+  }
+}
+
+.header-actions {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.table-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.search-input {
+  font-size: 0.82rem !important;
+  min-width: 250px;
+}
+
+
+.empty-msg {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  color: red;
+  font-size: 0.88rem;
+}
+
