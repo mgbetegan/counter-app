@@ -7,6 +7,7 @@ import {BG_DANGER, BG_DEFAULT, BG_SUCCESS} from '@app/utils/contants';
 })
 export class CounterService {
   counterStoredValue = this.loadCounterFromStorage()
+  multiplier = signal<number>(this.counterStoredValue.multiplier);
   counter = signal<number>(this.counterStoredValue.counter);
   actionsCount = signal<number>(this.counterStoredValue.actionsCount);
   melunPostalCodes = signal<number[]>([])
@@ -23,7 +24,7 @@ export class CounterService {
 
 
   increment() {
-    this.counter.update(value => value + 1);
+    this.counter.update(value => value + this.multiplier());
     this.updateActionCount()
     this.updateLocalStorage()
     this.checkMelunReset();
@@ -31,7 +32,7 @@ export class CounterService {
   }
 
   decrement() {
-    this.counter.update(value => value - 1);
+    this.counter.update(value => value -  this.multiplier());
     this.updateActionCount()
     this.updateLocalStorage()
     this.checkMelunReset()
@@ -45,6 +46,8 @@ export class CounterService {
   }
   reset() {
     this.counter.set(0);
+    this.multiplier.set(1);
+    this.actionsCount.set(1);
     this.updateLocalStorage();
   }
 
@@ -55,7 +58,8 @@ export class CounterService {
 
   private applyChanges() {
     if (this.actionsCount() % 30 === 0) {
-      this.counter.update(value => value * 2);
+      this.multiplier.update(value => value * 2);
+      //this.counter.update(value => value * 2);
       this.actionsCount.set(1);
     }
   }
@@ -63,16 +67,20 @@ export class CounterService {
   private updateLocalStorage() {
     localStorage.setItem('counter', JSON.stringify(this.counter()))
     localStorage.setItem('actionsCount', JSON.stringify(this.actionsCount()))
+    localStorage.setItem('multiplier', JSON.stringify(this.multiplier()))
   }
 
   private loadCounterFromStorage() {
     const counterValue = localStorage.getItem('counter');
-    const actionsCountValue = localStorage.getItem('actions_count');
+    const actionsCountValue = localStorage.getItem('actionsCount');
+    const multiplierValue = localStorage.getItem('multiplier');
     const counter = counterValue ? JSON.parse(counterValue) : null;
     const actionsCount = actionsCountValue ? actionsCountValue : 1;
+    const multiplier = multiplierValue ? JSON.parse(multiplierValue) : 1;
     return {
       counter: Number(counter),
       actionsCount: Number(actionsCount),
+      multiplier: Number(multiplier),
     }
   }
 

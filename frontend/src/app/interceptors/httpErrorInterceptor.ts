@@ -16,7 +16,7 @@ export const httpErrorInterceptor: HttpInterceptorFn = (req, next) => {
             errorMessage = `Unknown Error occurred`;
         }
 
-        messageService.add({severity: 'error', summary: 'Info',detail: errorMessage});
+        messageService.add({severity: 'error', summary: 'Error',detail: errorMessage});
 
       return throwError(() => error);
     })

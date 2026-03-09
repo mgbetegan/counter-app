@@ -1,5 +1,5 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 
 import { routes } from './app.routes';
 import {providePrimeNG} from 'primeng/config';
@@ -20,7 +20,7 @@ export const appConfig: ApplicationConfig = {
       useValue: environment,
     },
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes),
+    provideRouter(routes,withComponentInputBinding()),
     providePrimeNG({
       theme: {
         preset: PPTheme,

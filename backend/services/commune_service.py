@@ -55,7 +55,8 @@ class CommunesService:
                 stmt = insert(Commune).values(data)
 
                 stmt = stmt.on_duplicate_key_update(
-                    insee_code=stmt.inserted.insee_code,
+                    name=stmt.inserted.name,
+                    postal_code=stmt.inserted.postal_code,
                 )
                 self.db_session.execute(stmt)
 
